@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-28 sm:pt-32 lg:pt-36"
+      className="relative overflow-hidden pt-24 sm:pt-28 lg:pt-36"
     >
       {/* background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -32,7 +32,7 @@ export function Hero() {
             Built for Rwanda
           </span>
 
-          <h1 className="reveal mt-6 font-display text-4xl font-800 leading-[1.05] tracking-tight text-ink-950 text-balance sm:text-5xl lg:text-6xl">
+          <h1 className="reveal mt-5 font-display text-[2.15rem] font-800 leading-[1.08] tracking-tight text-ink-950 text-balance min-[380px]:text-4xl sm:mt-6 sm:text-5xl lg:text-6xl">
             Run your shop.
             <br className="hidden sm:block" />{" "}
             <span className="bg-gradient-to-r from-forest-600 to-forest-500 bg-clip-text text-transparent">
@@ -40,24 +40,24 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="reveal mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-600 text-balance">
+          <p className="reveal mx-auto mt-5 max-w-2xl text-base leading-relaxed text-ink-600 text-balance sm:mt-6 sm:text-lg">
             Curuza is the point-of-sale built for Rwanda. Sell, track stock,
             issue EBM invoices and know exactly when to register, file and pay
             your taxes — all from the same everyday records.
           </p>
 
-          <div className="reveal mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="#download" className="btn-primary group">
+          <div className="reveal mt-7 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row">
+            <a href="#download" className="btn-primary group w-full max-w-xs sm:w-auto">
               <Download className="h-4 w-4" />
               Download free
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
-            <a href="#features" className="btn-ghost">
+            <a href="#features" className="btn-ghost w-full max-w-xs sm:w-auto">
               See how it works
             </a>
           </div>
 
-          <div className="reveal mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-ink-500">
+          <div className="reveal mt-6 flex flex-col items-center justify-center gap-2 text-sm text-ink-500 min-[460px]:flex-row min-[460px]:flex-wrap min-[460px]:gap-x-6">
             <span className="inline-flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4 text-forest-600" /> No internet
               needed
@@ -74,7 +74,7 @@ export function Hero() {
         </div>
 
         {/* Product mockup */}
-        <div className="reveal relative mx-auto mt-16 max-w-5xl">
+        <div className="reveal relative mx-auto mt-12 max-w-5xl sm:mt-16">
           <div className="absolute -inset-x-8 -top-6 bottom-0 -z-10 rounded-[2.5rem] bg-gradient-to-b from-forest-100/60 to-transparent blur-2xl" />
           <DashboardMock />
         </div>
@@ -85,7 +85,7 @@ export function Hero() {
 
 function DashboardMock() {
   return (
-    <div className="overflow-hidden rounded-4xl border border-ink-100 bg-white shadow-lift">
+    <div className="overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-lift sm:rounded-4xl">
       {/* window chrome */}
       <div className="flex items-center gap-2 border-b border-ink-100 bg-cream-50 px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-amber-400" />
@@ -99,7 +99,7 @@ function DashboardMock() {
 
       <div className="grid grid-cols-12 gap-0">
         {/* sidebar */}
-        <aside className="col-span-3 hidden border-r border-ink-100 bg-cream-50/50 p-4 sm:block">
+        <aside className="col-span-3 hidden border-r border-ink-100 bg-cream-50/50 p-4 md:block">
           <div className="space-y-1">
             {[
               { icon: TrendingUp, label: "Dashboard", active: true },
@@ -130,7 +130,7 @@ function DashboardMock() {
         </aside>
 
         {/* main */}
-        <div className="col-span-12 p-5 sm:col-span-9 sm:p-6">
+        <div className="col-span-12 p-4 sm:p-5 md:col-span-9 md:p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">
@@ -140,14 +140,14 @@ function DashboardMock() {
                 Good morning, Aline
               </p>
             </div>
-            <div className="hidden items-center gap-2 rounded-full bg-forest-50 px-3 py-1.5 text-xs font-semibold text-forest-700 sm:flex">
+            <div className="hidden items-center gap-2 rounded-full bg-forest-50 px-3 py-1.5 text-xs font-semibold text-forest-700 min-[480px]:flex">
               <span className="h-2 w-2 rounded-full bg-forest-500" />
               EBM connected
             </div>
           </div>
 
           {/* kpis */}
-          <div className="mt-4 grid grid-cols-3 gap-3">
+          <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3">
             {[
               {
                 label: "Today",
@@ -170,7 +170,7 @@ function DashboardMock() {
             ].map((k) => (
               <div
                 key={k.label}
-                className="rounded-2xl border border-ink-100 bg-cream-50/60 p-3"
+                className="rounded-2xl border border-ink-100 bg-cream-50/60 p-3 last:col-span-2 sm:last:col-span-1"
               >
                 <p className="text-[11px] font-medium text-ink-400">
                   {k.label}

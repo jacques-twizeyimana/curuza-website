@@ -34,10 +34,10 @@ export function EBM() {
 
           {/* visual */}
           <div className="reveal relative">
-            <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-forest-100 to-amber-100/50 blur-2xl" />
-            <div className="overflow-hidden rounded-4xl border border-ink-100 bg-white p-6 shadow-lift">
+            <div className="absolute inset-0 -z-10 rounded-[2.5rem] bg-gradient-to-br from-forest-100 to-amber-100/50 blur-2xl sm:-inset-6" />
+            <div className="overflow-hidden rounded-3xl border border-ink-100 bg-white p-4 shadow-lift sm:rounded-4xl sm:p-6">
               {/* invoice header */}
-              <div className="flex items-center justify-between border-b border-ink-100 pb-4">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-100 pb-4">
                 <div className="flex items-center gap-2">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-forest-600 text-white">
                     <Receipt className="h-4 w-4" />

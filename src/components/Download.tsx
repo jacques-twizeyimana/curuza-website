@@ -55,12 +55,12 @@ export function Download() {
           </p>
         </div>
 
-        <div className="reveal mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
+        <div className="reveal mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
           {platforms.map((p) => (
             <a
               key={p.name}
               href="#download"
-              className="group flex flex-col items-center rounded-4xl border border-forest-800 bg-forest-900/60 p-7 text-center transition-all duration-500 hover:-translate-y-1 hover:border-forest-600 hover:bg-forest-900"
+              className="group flex flex-col items-center rounded-3xl border border-forest-800 bg-forest-900/60 p-6 text-center transition-all duration-500 hover:-translate-y-1 hover:border-forest-600 hover:bg-forest-900 sm:rounded-4xl md:p-7"
             >
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-forest-800 text-forest-100 transition-colors group-hover:bg-forest-600 group-hover:text-white">
                 <p.icon className="h-6 w-6" />

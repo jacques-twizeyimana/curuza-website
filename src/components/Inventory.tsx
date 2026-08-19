@@ -14,9 +14,9 @@ export function Inventory() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* visual */}
           <div className="reveal relative order-2 lg:order-1">
-            <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-amber-100/60 to-forest-100 blur-2xl" />
-            <div className="overflow-hidden rounded-4xl border border-ink-100 bg-cream-50/40 p-6 shadow-lift">
-              <div className="flex items-center justify-between">
+            <div className="absolute inset-0 -z-10 rounded-[2.5rem] bg-gradient-to-br from-amber-100/60 to-forest-100 blur-2xl sm:-inset-6" />
+            <div className="overflow-hidden rounded-3xl border border-ink-100 bg-cream-50/40 p-4 shadow-lift sm:rounded-4xl sm:p-6">
+              <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-forest-600 text-white">
                     <Package className="h-4 w-4" />
@@ -34,7 +34,7 @@ export function Inventory() {
                   <Scissors className="h-3.5 w-3.5" />
                   Split a carton into units
                 </div>
-                <div className="mt-3 flex items-center gap-3">
+                <div className="mt-3 flex flex-col items-center gap-3 min-[480px]:flex-row">
                   {/* carton */}
                   <div className="flex flex-col items-center">
                     <div className="flex h-14 w-20 items-center justify-center rounded-lg border-2 border-forest-300 bg-white">
@@ -43,10 +43,10 @@ export function Inventory() {
                     <span className="mt-1 text-[10px] text-forest-600">Soda · 24 units</span>
                   </div>
                   <div className="flex items-center gap-0.5 text-forest-500">
-                    <span className="text-lg">→</span>
+                    <span className="rotate-90 text-lg min-[480px]:rotate-0">→</span>
                   </div>
                   {/* units grid */}
-                  <div className="grid flex-1 grid-cols-6 gap-1">
+                  <div className="grid w-full max-w-36 grid-cols-6 gap-1 min-[480px]:max-w-none min-[480px]:flex-1">
                     {Array.from({ length: 24 }).map((_, i) => (
                       <div
                         key={i}
@@ -112,7 +112,7 @@ export function Inventory() {
                 })}
               </div>
 
-              <div className="mt-4 flex items-center justify-between rounded-2xl border border-forest-200 bg-forest-50 px-4 py-3">
+              <div className="mt-4 flex flex-col items-start gap-3 rounded-2xl border border-forest-200 bg-forest-50 px-4 py-3 min-[420px]:flex-row min-[420px]:items-center min-[420px]:justify-between">
                 <p className="text-xs font-semibold text-forest-800">
                   2 items running low — reorder suggested
                 </p>

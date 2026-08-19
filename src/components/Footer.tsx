@@ -42,7 +42,7 @@ export function Footer() {
               The Rwanda-first POS that keeps your shop running and your taxes ready —
               all from the same everyday records.
             </p>
-            <div className="mt-5 flex gap-2">
+            <div className="mt-5 flex flex-wrap gap-2">
               {['Kinyarwanda', 'English', 'Français'].map((l) => (
                 <span
                   key={l}
@@ -77,11 +77,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-ink-100 pt-6 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-ink-100 pt-6 text-center sm:flex-row sm:text-left">
           <p className="text-xs text-ink-500">
             © {new Date().getFullYear()} Curuza. Made in Kigali for Rwanda.
           </p>
-          <p className="text-xs text-ink-500">
+          <p className="max-w-xl text-xs text-ink-500 sm:text-right">
             Not affiliated with the Rwanda Revenue Authority. Always confirm current tax rules.
           </p>
         </div>

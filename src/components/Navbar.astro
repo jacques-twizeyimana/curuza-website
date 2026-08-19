@@ -27,13 +27,13 @@ const links = [
       <a href="#download" class="btn-primary">Download free</a>
     </div>
 
-    <details class="group relative md:hidden">
-      <summary class="inline-flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-xl border border-ink-200 bg-white text-ink-800 [&::-webkit-details-marker]:hidden">
+    <details class="group relative md:hidden" data-mobile-navigation>
+      <summary class="inline-flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-xl border border-ink-200 bg-white text-ink-800 transition-colors hover:border-forest-300 hover:text-forest-700 [&::-webkit-details-marker]:hidden">
         <span class="sr-only">Toggle navigation</span>
         <svg class="h-5 w-5 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
         <svg class="hidden h-5 w-5 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
       </summary>
-      <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-ink-100 bg-cream-50 p-3 shadow-lift">
+      <div class="absolute right-0 mt-3 w-64 max-w-[calc(100vw-2rem)] rounded-2xl border border-ink-100 bg-cream-50 p-3 shadow-lift">
         {links.map((link) => (
           <a href={link.href} class="block rounded-xl px-4 py-3 text-sm font-medium text-ink-800 hover:bg-forest-50 hover:text-forest-700">
             {link.label}
@@ -44,3 +44,15 @@ const links = [
     </details>
   </nav>
 </header>
+
+<script>
+  const mobileNavigation = document.querySelector<HTMLDetailsElement>('[data-mobile-navigation]');
+
+  mobileNavigation?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => mobileNavigation.removeAttribute('open'));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') mobileNavigation?.removeAttribute('open');
+  });
+</script>

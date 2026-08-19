@@ -11,13 +11,13 @@ Measured on 2026-08-19 against local production builds using Lighthouse 12.8.2 a
 | Lighthouse Best Practices | 100 | 100 | No change |
 | Lighthouse SEO | 91 | 100 | +9 points |
 | First Contentful Paint | 3.24 s | 0.90 s | 72% faster |
-| Largest Contentful Paint | 3.24 s | 1.05 s | 68% faster |
+| Largest Contentful Paint | 3.24 s | 1.35 s | 58% faster |
 | Speed Index | 4.62 s | 0.90 s | 80% faster |
-| Time to Interactive | 3.24 s | 1.05 s | 68% faster |
+| Time to Interactive | 3.24 s | 1.35 s | 58% faster |
 | Total Blocking Time | 0 ms | 0 ms | No change |
 | Cumulative Layout Shift | 0 | 0 | No change |
-| Initial transferred bytes | 143.5 kB | 22.5 kB | 84% less |
-| Initial network requests | 7 | 3 | 57% fewer |
+| Initial transferred bytes | 143.5 kB | 56.8 kB | 60% less |
+| Initial network requests | 7 | 4 | 43% fewer |
 | Browser JavaScript requests | 1 (60.4 kB) | 0 | Removed from initial load |
 | SEO-visible page content | Client-rendered | Build-time HTML | Fully crawlable without JS |
 
@@ -29,7 +29,7 @@ Lighthouse lab timings vary slightly between runs. Scores and transfer/request c
 - Existing visual sections render at build time and are not hydrated in the browser.
 - The mobile menu and FAQ use native HTML disclosure controls.
 - The VAT threshold calculator uses a small inline script instead of hydrating React.
-- Google Fonts and the Vite starter favicon were removed from the critical path.
+- Google Fonts and the Vite starter favicon were removed from the critical path; Sora is self-hosted and preloaded from the site origin.
 - Metadata now includes a canonical URL, index directives, Open Graph and Twitter cards, a real 1200 x 630 social image, and structured data.
 - Dead footer links were replaced with working in-page destinations.
 - Heading order and color contrast were corrected to reach a 100 Accessibility score.
@@ -37,10 +37,10 @@ Lighthouse lab timings vary slightly between runs. Scores and transfer/request c
 ## Reproduce the post-migration benchmark
 
 ```bash
-npm ci
-npm run check
-npm run build
-npm run preview -- --host 127.0.0.1 --port 4173
+pnpm install --frozen-lockfile
+pnpm check
+pnpm build
+pnpm preview --host 127.0.0.1 --port 4173
 npx --yes lighthouse@12.8.2 http://127.0.0.1:4173/ \
   --only-categories=performance,accessibility,best-practices,seo \
   --output=html \

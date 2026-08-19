@@ -57,9 +57,9 @@ export function Reporting() {
 
           {/* visual */}
           <div className="reveal relative">
-            <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-forest-100 to-cream-200 blur-2xl" />
-            <div className="overflow-hidden rounded-4xl border border-ink-100 bg-white p-6 shadow-lift">
-              <div className="flex items-center justify-between">
+            <div className="absolute inset-0 -z-10 rounded-[2.5rem] bg-gradient-to-br from-forest-100 to-cream-200 blur-2xl sm:-inset-6" />
+            <div className="overflow-hidden rounded-3xl border border-ink-100 bg-white p-4 shadow-lift sm:rounded-4xl sm:p-6">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="font-display text-sm font-700 text-ink-950">
                   Profit & loss · August
                 </p>
@@ -74,13 +74,13 @@ export function Reporting() {
                 <Row label="Cost of goods" value="− RWF 1,580,000" tone="amber" pct={60} />
                 <Row label="Gross profit" value="RWF 1,060,000" tone="forest" pct={40} muted />
                 <Row label="Expenses" value="− RWF 420,000" tone="amber" pct={16} />
-                <div className="mt-2 flex items-center justify-between rounded-2xl bg-forest-600 px-4 py-3 text-white">
+                <div className="mt-2 flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-forest-600 px-4 py-3 text-white">
                   <span className="font-display text-sm font-700">Net profit</span>
                   <span className="font-display text-lg font-800">RWF 640,000</span>
                 </div>
               </div>
 
-              <div className="mt-5 grid grid-cols-3 gap-2">
+              <div className="mt-5 grid grid-cols-1 gap-2 min-[380px]:grid-cols-3">
                 {[
                   { label: 'Margin', value: '24%' },
                   { label: 'Expenses', value: '16%' },

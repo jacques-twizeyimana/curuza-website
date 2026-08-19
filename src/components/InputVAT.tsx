@@ -56,11 +56,11 @@ export function InputVAT() {
 
           {/* visual */}
           <div className="reveal relative">
-            <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-forest-100 to-cream-200 blur-2xl" />
-            <div className="overflow-hidden rounded-4xl border border-ink-100 bg-white p-6 shadow-lift">
+            <div className="absolute inset-0 -z-10 rounded-[2.5rem] bg-gradient-to-br from-forest-100 to-cream-200 blur-2xl sm:-inset-6" />
+            <div className="overflow-hidden rounded-3xl border border-ink-100 bg-white p-4 shadow-lift sm:rounded-4xl sm:p-6">
               {/* purchase code card */}
-              <div className="rounded-3xl border border-forest-200 bg-forest-50/60 p-5">
-                <div className="flex items-center justify-between">
+              <div className="rounded-2xl border border-forest-200 bg-forest-50/60 p-4 sm:rounded-3xl sm:p-5">
+                <div className="flex flex-col items-start gap-3 min-[480px]:flex-row min-[480px]:items-center min-[480px]:justify-between">
                   <div className="flex items-center gap-2">
                     <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-forest-600 text-white">
                       <QrCode className="h-4 w-4" />
@@ -74,8 +74,8 @@ export function InputVAT() {
                     Generate
                   </span>
                 </div>
-                <div className="mt-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3">
-                  <span className="font-mono text-lg font-700 tracking-wider text-forest-800">
+                <div className="mt-4 flex flex-wrap items-center gap-3 rounded-2xl bg-white px-3 py-3 sm:px-4">
+                  <span className="break-all font-mono text-sm font-700 tracking-wider text-forest-800 sm:text-lg">
                     RW-4001-2345-6789
                   </span>
                   <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-forest-100 px-2.5 py-1 text-[11px] font-semibold text-forest-700">
@@ -92,14 +92,14 @@ export function InputVAT() {
 
                 {/* sale */}
                 <div className="mt-3 rounded-2xl border border-ink-100 bg-cream-50/60 p-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col items-start gap-1 min-[480px]:flex-row min-[480px]:items-center min-[480px]:justify-between">
                     <div className="flex items-center gap-2">
                       <Receipt className="h-4 w-4 text-ink-500" />
                       <span className="text-sm font-semibold text-ink-900">Sale · pair of shoes</span>
                     </div>
                     <span className="font-display text-sm font-700 text-ink-950">RWF 10,000</span>
                   </div>
-                  <div className="mt-2 flex items-center justify-between text-sm text-ink-500">
+                  <div className="mt-2 flex flex-wrap items-center justify-between gap-1 text-sm text-ink-500">
                     <span>Output VAT (18%)</span>
                     <span className="font-display font-700 text-ink-800">RWF 1,800</span>
                   </div>
@@ -111,7 +111,7 @@ export function InputVAT() {
 
                 {/* purchase */}
                 <div className="rounded-2xl border border-forest-200 bg-forest-50/40 p-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col items-start gap-1 min-[480px]:flex-row min-[480px]:items-center min-[480px]:justify-between">
                     <div className="flex items-center gap-2">
                       <ShieldCheck className="h-4 w-4 text-forest-600" />
                       <span className="text-sm font-semibold text-ink-900">
@@ -120,14 +120,14 @@ export function InputVAT() {
                     </div>
                     <span className="font-display text-sm font-700 text-ink-950">RWF 6,000</span>
                   </div>
-                  <div className="mt-2 flex items-center justify-between text-sm text-forest-700">
+                  <div className="mt-2 flex flex-wrap items-center justify-between gap-1 text-sm text-forest-700">
                     <span>Input VAT already paid (18%)</span>
                     <span className="font-display font-700 text-forest-800">RWF 1,080</span>
                   </div>
                 </div>
 
                 {/* net */}
-                <div className="mt-4 flex items-center justify-between rounded-2xl bg-forest-600 px-4 py-3 text-white">
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-forest-600 px-4 py-3 text-white">
                   <span className="font-display text-sm font-700">Net VAT owed to RRA</span>
                   <span className="font-display text-lg font-800">RWF 720</span>
                 </div>
