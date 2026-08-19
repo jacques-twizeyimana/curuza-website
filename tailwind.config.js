@@ -53,8 +53,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Avenir Next', 'Avenir', 'Segoe UI', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        sans: ['Avenir Next', 'Avenir', 'Segoe UI', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Sora Variable', 'Sora', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         soft: '0 1px 2px rgba(19,65,46,0.04), 0 8px 24px -8px rgba(19,65,46,0.10)',
