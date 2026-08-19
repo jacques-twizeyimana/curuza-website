@@ -1,0 +1,46 @@
+---
+import Logo from './Logo.astro';
+
+const links = [
+  { label: 'Features', href: '#features' },
+  { label: 'Taxes', href: '#taxes' },
+  { label: 'VAT threshold', href: '#threshold' },
+  { label: 'FAQ', href: '#faq' },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-ink-100 bg-cream-50/90 backdrop-blur-md">
+  <nav class="container-px flex h-16 items-center justify-between lg:h-18" aria-label="Primary navigation">
+    <a href="#top" class="flex items-center" aria-label="Curuza home">
+      <Logo />
+    </a>
+
+    <div class="hidden items-center gap-1 md:flex">
+      {links.map((link) => (
+        <a href={link.href} class="rounded-xl px-4 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-forest-50 hover:text-forest-700">
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <div class="hidden items-center gap-2 md:flex">
+      <a href="#download" class="btn-primary">Download free</a>
+    </div>
+
+    <details class="group relative md:hidden">
+      <summary class="inline-flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-xl border border-ink-200 bg-white text-ink-800 [&::-webkit-details-marker]:hidden">
+        <span class="sr-only">Toggle navigation</span>
+        <svg class="h-5 w-5 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <svg class="hidden h-5 w-5 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+      </summary>
+      <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-ink-100 bg-cream-50 p-3 shadow-lift">
+        {links.map((link) => (
+          <a href={link.href} class="block rounded-xl px-4 py-3 text-sm font-medium text-ink-800 hover:bg-forest-50 hover:text-forest-700">
+            {link.label}
+          </a>
+        ))}
+        <a href="#download" class="btn-primary mt-2 w-full">Download free</a>
+      </div>
+    </details>
+  </nav>
+</header>

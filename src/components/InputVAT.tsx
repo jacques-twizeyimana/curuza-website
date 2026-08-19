@@ -20,7 +20,7 @@ const steps = [
 
 export function InputVAT() {
   return (
-    <section className="section-pad bg-cream-100/60">
+    <section id="input-vat" className="section-pad bg-cream-100/60">
       <div className="container-px">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* copy */}

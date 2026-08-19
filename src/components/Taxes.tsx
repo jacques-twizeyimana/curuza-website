@@ -4,7 +4,6 @@ import {
   FileText,
   Bell,
   TrendingUp,
-  CheckCircle2,
   ArrowRight,
 } from 'lucide-react';
 

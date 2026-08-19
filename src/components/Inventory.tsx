@@ -9,7 +9,7 @@ const items = [
 
 export function Inventory() {
   return (
-    <section className="section-pad bg-white">
+    <section id="inventory" className="section-pad bg-white">
       <div className="container-px">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* visual */}

@@ -5,28 +5,15 @@ type LogoProps = {
 
 export function Logo({ className = '', showWordmark = true }: LogoProps) {
   return (
-    <div className={`flex items-center gap-2.5 ${className}`}>
+    <span className={`flex items-center gap-2.5 ${className}`}>
       <span className="relative inline-flex h-9 w-9 items-center justify-center">
-        <svg
-          viewBox="0 0 40 40"
-          className="h-9 w-9"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
+        <svg viewBox="0 0 40 40" className="h-9 w-9" fill="none" aria-hidden="true">
           <rect width="40" height="40" rx="11" fill="#207c52" />
-          <path
-            d="M13 28.5V12.5C13 11.67 13.67 11 14.5 11H22.5C26.09 11 29 13.91 29 17.5C29 21.09 26.09 24 22.5 24H17V28.5C17 29.33 16.33 30 15.5 30H14.5C13.67 30 13 29.33 13 28.5Z"
-            fill="white"
-          />
+          <path d="M13 28.5V12.5C13 11.67 13.67 11 14.5 11H22.5C26.09 11 29 13.91 29 17.5C29 21.09 26.09 24 22.5 24H17V28.5C17 29.33 16.33 30 15.5 30H14.5C13.67 30 13 29.33 13 28.5Z" fill="white" />
           <circle cx="25.5" cy="25.5" r="2.5" fill="#ffc94a" />
         </svg>
       </span>
-      {showWordmark && (
-        <span className="font-display text-xl font-700 tracking-tight text-ink-950">
-          Curuza
-        </span>
-      )}
-    </div>
+      {showWordmark && <span className="font-display text-xl font-700 tracking-tight text-ink-950">Curuza</span>}
+    </span>
   );
 }

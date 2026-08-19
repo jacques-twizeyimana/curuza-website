@@ -3,19 +3,31 @@ import { Logo } from './Logo';
 const cols = [
   {
     title: 'Product',
-    links: ['Features', 'Taxes', 'Threshold', 'Download', 'Pricing'],
+    links: [
+      { label: 'Features', href: '#features' },
+      { label: 'EBM invoicing', href: '#ebm-invoicing' },
+      { label: 'Inventory', href: '#inventory' },
+      { label: 'Reports', href: '#reporting' },
+    ],
   },
   {
-    title: 'Company',
-    links: ['About', 'Blog', 'Careers', 'Contact'],
+    title: 'Tax readiness',
+    links: [
+      { label: 'Tax tools', href: '#taxes' },
+      { label: 'VAT calculator', href: '#threshold' },
+      { label: 'Input VAT', href: '#input-vat' },
+    ],
   },
   {
-    title: 'Resources',
-    links: ['Help center', 'VAT guide', 'CIT guide', 'PIT guide', 'Community'],
+    title: 'Why Curuza',
+    links: [
+      { label: 'Built for Rwanda', href: '#why-curuza' },
+      { label: 'Common questions', href: '#faq' },
+    ],
   },
   {
-    title: 'Legal',
-    links: ['Privacy', 'Terms', 'Security', 'RRA compliance'],
+    title: 'Get started',
+    links: [{ label: 'Download free', href: '#download' }],
   },
 ];
 
@@ -45,17 +57,17 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
             {cols.map((c) => (
               <div key={c.title}>
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">
+                <p className="text-xs font-semibold uppercase tracking-wide text-ink-500">
                   {c.title}
                 </p>
                 <ul className="mt-4 space-y-2.5">
-                  {c.links.map((l) => (
-                    <li key={l}>
+                  {c.links.map((link) => (
+                    <li key={link.label}>
                       <a
-                        href="#"
+                        href={link.href}
                         className="text-sm text-ink-600 transition-colors hover:text-forest-700"
                       >
-                        {l}
+                        {link.label}
                       </a>
                     </li>
                   ))}
@@ -66,10 +78,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-ink-100 pt-6 sm:flex-row">
-          <p className="text-xs text-ink-400">
+          <p className="text-xs text-ink-500">
             © {new Date().getFullYear()} Curuza. Made in Kigali for Rwanda.
           </p>
-          <p className="text-xs text-ink-400">
+          <p className="text-xs text-ink-500">
             Not affiliated with the Rwanda Revenue Authority. Always confirm current tax rules.
           </p>
         </div>

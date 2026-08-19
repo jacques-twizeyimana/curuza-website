@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{astro,html,js,ts,jsx,tsx,md,mdx}'],
   theme: {
     extend: {
       colors: {
@@ -53,8 +53,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Sora', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Avenir Next', 'Avenir', 'Segoe UI', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Avenir Next', 'Avenir', 'Segoe UI', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         soft: '0 1px 2px rgba(19,65,46,0.04), 0 8px 24px -8px rgba(19,65,46,0.10)',

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Navbar from '@/components/Navbar.astro';
+import { Hero } from '@/components/Hero';
+import { Problem } from '@/components/Problem';
+import { Features } from '@/components/Features';
+import { EBM } from '@/components/EBM';
+import { Inventory } from '@/components/Inventory';
+import { Taxes } from '@/components/Taxes';
+import { Reporting } from '@/components/Reporting';
+import { InputVAT } from '@/components/InputVAT';
+import { Trust } from '@/components/Trust';
+import Threshold from '@/components/Threshold.astro';
+import Faq from '@/components/Faq.astro';
+import { Download } from '@/components/Download';
+import { Footer } from '@/components/Footer';
+
+const title = 'Curuza | POS, EBM Invoicing & Tax-Ready Records for Rwanda';
+const description = 'Curuza is point-of-sale software for Rwandan shops. Sell offline, manage inventory by carton or unit, issue EBM invoices and keep tax-ready records.';
+---
+
+<BaseLayout {title} {description}>
+  <div id="top" class="min-h-screen bg-cream-50 text-ink-900">
+    <Navbar />
+    <main>
+      <Hero />
+      <Problem />
+      <Features />
+      <EBM />
+      <Inventory />
+      <Taxes />
+      <Reporting />
+      <InputVAT />
+      <Trust />
+      <Threshold />
+      <Faq />
+      <Download />
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

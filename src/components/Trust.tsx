@@ -25,7 +25,7 @@ const pillars = [
 
 export function Trust() {
   return (
-    <section className="section-pad">
+    <section id="why-curuza" className="section-pad">
       <div className="container-px">
         <div className="mx-auto max-w-2xl text-center">
           <span className="eyebrow reveal">Why Curuza fits Rwanda</span>

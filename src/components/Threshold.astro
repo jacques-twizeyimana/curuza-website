@@ -1,0 +1,133 @@
+---
+import { AlertTriangle, Info, ShieldCheck, TrendingUp } from 'lucide-react';
+---
+
+<section id="threshold" class="section-pad bg-white">
+  <div class="container-px">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="eyebrow reveal">VAT threshold calculator</span>
+      <h2 class="reveal mt-5 font-display text-3xl font-700 tracking-tight text-ink-950 text-balance sm:text-4xl">
+        When will your business need to register for VAT in Rwanda?
+      </h2>
+      <p class="reveal mt-4 text-lg text-ink-600 text-balance">
+        Drag the slider to your average monthly sales. Curuza does this automatically every day using your real numbers.
+      </p>
+    </div>
+
+    <div class="reveal mx-auto mt-12 max-w-4xl overflow-hidden rounded-4xl border border-ink-100 bg-cream-50/40 shadow-lift" data-threshold-calculator>
+      <div class="grid lg:grid-cols-5">
+        <div class="border-b border-ink-100 p-7 sm:p-9 lg:col-span-3 lg:border-b-0 lg:border-r">
+          <label for="monthly" class="block text-sm font-semibold text-ink-700">Average monthly turnover</label>
+          <div class="mt-2 flex flex-wrap items-baseline gap-2">
+            <output for="monthly" id="monthly-output" class="font-display text-4xl font-800 text-ink-950 sm:text-5xl">RWF 350,000</output>
+            <span class="text-sm text-ink-500">/ month</span>
+          </div>
+
+          <input id="monthly" type="range" min="0" max="1000000" step="10000" value="350000" class="mt-5 w-full cursor-pointer accent-forest-600" />
+          <div class="mt-1 flex justify-between text-xs text-ink-500"><span>RWF 0</span><span>RWF 1,000,000</span></div>
+
+          <div class="mt-7 grid grid-cols-2 gap-3">
+            <div class="rounded-2xl border border-ink-100 bg-white p-4">
+              <p class="text-xs text-ink-500">Projected annual turnover</p>
+              <p id="annual-output" class="mt-1 font-display text-xl font-800 text-ink-950">RWF 4,200,000</p>
+            </div>
+            <div class="rounded-2xl border border-ink-100 bg-white p-4">
+              <p class="text-xs text-ink-500">VAT threshold</p>
+              <p class="mt-1 font-display text-xl font-800 text-ink-950">RWF 5,000,000</p>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <div class="flex items-center justify-between text-xs font-medium text-ink-500">
+              <span>Progress to threshold</span><output id="percentage-output" for="monthly">84%</output>
+            </div>
+            <div class="mt-1.5 h-3 w-full overflow-hidden rounded-full bg-ink-100" role="progressbar" aria-label="Progress to VAT threshold" aria-valuemin="0" aria-valuemax="100" aria-valuenow="84">
+              <div id="threshold-progress" class="h-full rounded-full bg-amber-400 transition-all duration-500" style="width: 84%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-7 sm:p-9 lg:col-span-2">
+          <div id="threshold-status" class="flex h-full flex-col rounded-3xl border border-amber-200 bg-amber-50 p-6" aria-live="polite">
+            <div id="threshold-icon" class="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/15 text-amber-600">
+              <TrendingUp className="h-6 w-6" />
+              <AlertTriangle className="hidden h-6 w-6" />
+              <ShieldCheck className="hidden h-6 w-6" />
+            </div>
+            <h3 id="threshold-title" class="mt-4 font-display text-xl font-700 text-amber-900">3 months to the threshold</h3>
+            <p id="threshold-body" class="mt-2 flex-1 text-sm leading-relaxed text-amber-800">You are approaching the VAT registration threshold. Curuza will start nudging you to prepare so you are not caught off guard.</p>
+            <a href="#download" class="mt-5 inline-flex items-center justify-center rounded-xl bg-amber-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-amber-800">Let Curuza track this for you</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-2 border-t border-ink-100 bg-cream-50/60 px-7 py-4 text-xs text-ink-500">
+        <Info className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
+        <p>Illustrative only. This calculator uses a RWF 5 million rolling 12-month turnover threshold. Always confirm the current VAT registration rules with the Rwanda Revenue Authority.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const THRESHOLD = 5_000_000;
+  const root = document.querySelector<HTMLElement>('[data-threshold-calculator]');
+
+  if (root) {
+    const slider = root.querySelector<HTMLInputElement>('#monthly');
+    const monthlyOutput = root.querySelector<HTMLOutputElement>('#monthly-output');
+    const annualOutput = root.querySelector<HTMLElement>('#annual-output');
+    const percentageOutput = root.querySelector<HTMLOutputElement>('#percentage-output');
+    const progress = root.querySelector<HTMLElement>('#threshold-progress');
+    const progressbar = root.querySelector<HTMLElement>('[role="progressbar"]');
+    const status = root.querySelector<HTMLElement>('#threshold-status');
+    const icon = root.querySelector<HTMLElement>('#threshold-icon');
+    const title = root.querySelector<HTMLElement>('#threshold-title');
+    const body = root.querySelector<HTMLElement>('#threshold-body');
+    const cta = status?.querySelector<HTMLAnchorElement>('a');
+    const icons = icon?.querySelectorAll<SVGElement>('svg');
+    const format = (value: number) => `RWF ${Math.round(value).toLocaleString('en-US')}`;
+
+    const update = () => {
+      if (!slider || !monthlyOutput || !annualOutput || !percentageOutput || !progress || !progressbar || !status || !icon || !title || !body || !cta || !icons) return;
+
+      const monthly = Number(slider.value);
+      const annual = monthly * 12;
+      const percentage = Math.min(100, (annual / THRESHOLD) * 100);
+      const months = monthly > 0 ? Math.ceil((THRESHOLD - annual) / monthly) : 0;
+      const isOver = annual >= THRESHOLD;
+      const isNear = !isOver && percentage >= 75;
+      const isGrowing = !isOver && !isNear && percentage >= 40;
+      const amber = isOver || isNear;
+
+      monthlyOutput.value = format(monthly);
+      annualOutput.textContent = format(annual);
+      percentageOutput.value = `${Math.round(percentage)}%`;
+      progress.style.width = `${percentage}%`;
+      progressbar.setAttribute('aria-valuenow', String(Math.round(percentage)));
+      progress.className = `h-full rounded-full transition-all duration-500 ${isOver ? 'bg-amber-500' : isNear ? 'bg-amber-400' : 'bg-forest-500'}`;
+      status.className = `flex h-full flex-col rounded-3xl border p-6 ${amber ? 'border-amber-200 bg-amber-50' : 'border-forest-200 bg-forest-50'}`;
+      icon.className = `flex h-12 w-12 items-center justify-center rounded-2xl ${amber ? 'bg-amber-500/15 text-amber-600' : 'bg-forest-500/15 text-forest-700'}`;
+      title.className = `mt-4 font-display text-xl font-700 ${amber ? 'text-amber-900' : 'text-forest-900'}`;
+      body.className = `mt-2 flex-1 text-sm leading-relaxed ${amber ? 'text-amber-800' : 'text-forest-800'}`;
+      cta.className = `mt-5 inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition-colors ${amber ? 'bg-amber-700 hover:bg-amber-800' : 'bg-forest-600 hover:bg-forest-700'}`;
+      icons.forEach((svg, index) => svg.classList.toggle('hidden', index !== (isOver ? 1 : isNear || isGrowing ? 0 : 2)));
+
+      if (isOver) {
+        title.textContent = 'You should register for VAT now';
+        body.textContent = 'Your projected turnover meets or exceeds the RWF 5M threshold. Confirm the current requirements with RRA and prepare to register.';
+      } else if (isNear) {
+        title.textContent = `${months} ${months === 1 ? 'month' : 'months'} to the threshold`;
+        body.textContent = 'You are approaching the VAT registration threshold. Curuza will start nudging you to prepare so you are not caught off guard.';
+      } else if (isGrowing) {
+        title.textContent = 'On track — keep an eye on growth';
+        body.textContent = 'You are below the threshold but growing. Curuza watches your rolling turnover and tells you the moment that changes.';
+      } else {
+        title.textContent = 'Comfortably below the threshold';
+        body.textContent = 'No registration is indicated by this estimate yet. Curuza still keeps clean records so you are ready if that changes.';
+      }
+    };
+
+    slider?.addEventListener('input', update, { passive: true });
+  }
+</script>

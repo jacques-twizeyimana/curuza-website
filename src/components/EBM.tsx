@@ -2,7 +2,7 @@ import { CheckCircle2, Receipt, Printer, Wifi, WifiOff } from 'lucide-react';
 
 export function EBM() {
   return (
-    <section className="section-pad">
+    <section id="ebm-invoicing" className="section-pad">
       <div className="container-px">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* copy */}
